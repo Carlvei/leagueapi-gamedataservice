@@ -1,0 +1,41 @@
+riot:
+  api:
+    latest-game-version: 13.7.1
+    regions:
+      euw:
+        base-url: https://euw1.api.riotgames.com
+        apis:
+          summoners:
+            url: ${riot.api.regions.euw.base-url}/lol/summoner/v4/summoners/
+      europe:
+        base-url: https://europe.api.riotgames.com
+        apis:
+          matches:
+            url: ${riot.api.regions.europe.base-url}/lol/match/v5/matches/
+    data-dragon:
+      latest-version: 13.7.1
+      base-url: https://ddragon.leagueoflegends.com/cdn/
+      types:
+        assets:
+          extension: img
+          subjects:
+            profile-icons:
+              url: ${riot.api.data-dragon.base-url}${riot.api.data-dragon.latest-version}/${riot.api.data-dragon.types.assets.extension}/profileicon/
+            runes:
+              url: ${riot.api.data-dragon.base-url}${riot.api.data-dragon.types.assets.extension}/
+            summoner-spells:
+              url: ${riot.api.data-dragon.base-url}${riot.api.data-dragon.latest-version}/${riot.api.data-dragon.types.assets.extension}/spell/
+            champions:
+              url: ${riot.api.data-dragon.base-url}${riot.api.data-dragon.latest-version}/${riot.api.data-dragon.types.assets.extension}/champion/
+            items:
+              url: ${riot.api.data-dragon.base-url}${riot.api.data-dragon.latest-version}/${riot.api.data-dragon.types.assets.extension}/item/
+        data:
+          extension: data
+          subjects:
+            runes:
+              url: ${riot.api.data-dragon.base-url}${riot.api.data-dragon.latest-version}/${riot.api.data-dragon.types.data.extension}/en_US/runesReforged.json
+            summoner-spells:
+              url: ${riot.api.data-dragon.base-url}${riot.api.data-dragon.latest-version}/${riot.api.data-dragon.types.data.extension}/en_US/summoner.json
+spring:
+  autoconfigure:
+    exclude[0]: org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
