@@ -36,6 +36,7 @@ riot:
               url: ${riot.api.data-dragon.base-url}${riot.api.data-dragon.latest-version}/${riot.api.data-dragon.types.data.extension}/en_US/runesReforged.json
             summoner-spells:
               url: ${riot.api.data-dragon.base-url}${riot.api.data-dragon.latest-version}/${riot.api.data-dragon.types.data.extension}/en_US/summoner.json
+    key: RGAPI-e424a308-7c68-43aa-8b06-4f8d33f90172
 spring:
   autoconfigure:
     exclude[0]: org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration

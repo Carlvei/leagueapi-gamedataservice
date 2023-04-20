@@ -1,8 +1,8 @@
 package at.adesso.leagueapi.gamedataservice.infrastructure.adapter.riot.runes.mapper;
 
+import at.adesso.leagueapi.commons.mapper.DefaultMapperConfig;
 import at.adesso.leagueapi.gamedataservice.domain.runes.RuneTree;
 import at.adesso.leagueapi.gamedataservice.infrastructure.adapter.riot.runes.model.RuneTreeDto;
-import at.adesso.leagueapi.gamedataservice.infrastructure.config.mapper.DefaultMapperConfig;
 import org.mapstruct.Mapper;
 
 import java.util.List;
