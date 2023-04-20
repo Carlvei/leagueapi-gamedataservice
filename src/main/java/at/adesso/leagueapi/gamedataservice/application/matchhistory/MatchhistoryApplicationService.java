@@ -1,11 +1,11 @@
 package at.adesso.leagueapi.gamedataservice.application.matchhistory;
 
+import at.adesso.leagueapi.commons.errorhandling.exception.ResourceNotFoundException;
 import at.adesso.leagueapi.gamedataservice.application.matchhistory.mapper.MatchhistoryOverviewMapper;
 import at.adesso.leagueapi.gamedataservice.domain.matchhistory.MatchhistoryEntry;
 import at.adesso.leagueapi.gamedataservice.domain.matchhistory.MatchhistoryEntryOverview;
 import at.adesso.leagueapi.gamedataservice.infrastructure.adapter.riot.matchhistory.RiotMatchhistoryAdapter;
 import at.adesso.leagueapi.gamedataservice.infrastructure.adapter.riot.summoners.RiotSummonerAdapter;
-import at.adesso.leagueapi.gamedataservice.infrastructure.config.errorhandling.exception.ResourceNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;

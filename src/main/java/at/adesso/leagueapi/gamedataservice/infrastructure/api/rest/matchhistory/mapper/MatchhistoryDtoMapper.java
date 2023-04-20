@@ -1,5 +1,7 @@
 package at.adesso.leagueapi.gamedataservice.infrastructure.api.rest.matchhistory.mapper;
 
+import at.adesso.leagueapi.commons.errorhandling.exception.ResourceNotFoundException;
+import at.adesso.leagueapi.commons.mapper.DefaultMapperConfig;
 import at.adesso.leagueapi.gamedataservice.application.datadragon.assets.AssetsApplicationService;
 import at.adesso.leagueapi.gamedataservice.application.datadragon.runes.RunesApplicationService;
 import at.adesso.leagueapi.gamedataservice.application.datadragon.summonerspells.SummonerSpellApplicationService;
@@ -11,8 +13,6 @@ import at.adesso.leagueapi.gamedataservice.infrastructure.api.rest.matchhistory.
 import at.adesso.leagueapi.gamedataservice.infrastructure.api.rest.matchhistory.model.MatchhistoryEntryOverviewDto;
 import at.adesso.leagueapi.gamedataservice.infrastructure.api.rest.matchhistory.model.ParticipantDto;
 import at.adesso.leagueapi.gamedataservice.infrastructure.api.rest.matchhistory.model.ParticipantOverviewDto;
-import at.adesso.leagueapi.gamedataservice.infrastructure.config.errorhandling.exception.ResourceNotFoundException;
-import at.adesso.leagueapi.gamedataservice.infrastructure.config.mapper.DefaultMapperConfig;
 import org.mapstruct.AfterMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

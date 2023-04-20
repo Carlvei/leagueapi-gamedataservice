@@ -1,9 +1,9 @@
 package at.adesso.leagueapi.gamedataservice.infrastructure.api.rest.summoners.mapper;
 
+import at.adesso.leagueapi.commons.mapper.DefaultMapperConfig;
 import at.adesso.leagueapi.gamedataservice.application.datadragon.assets.AssetsApplicationService;
 import at.adesso.leagueapi.gamedataservice.domain.accounts.model.Summoner;
 import at.adesso.leagueapi.gamedataservice.infrastructure.api.rest.summoners.model.SummonerDto;
-import at.adesso.leagueapi.gamedataservice.infrastructure.config.mapper.DefaultMapperConfig;
 import org.mapstruct.AfterMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

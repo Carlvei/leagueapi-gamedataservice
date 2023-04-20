@@ -1,10 +1,10 @@
 package at.adesso.leagueapi.gamedataservice.application.matchhistory.mapper;
 
+import at.adesso.leagueapi.commons.errorhandling.exception.ResourceNotFoundException;
+import at.adesso.leagueapi.commons.mapper.DefaultMapperConfig;
 import at.adesso.leagueapi.gamedataservice.domain.matchhistory.MatchhistoryEntry;
 import at.adesso.leagueapi.gamedataservice.domain.matchhistory.MatchhistoryEntryOverview;
 import at.adesso.leagueapi.gamedataservice.domain.matchhistory.Participant;
-import at.adesso.leagueapi.gamedataservice.infrastructure.config.errorhandling.exception.ResourceNotFoundException;
-import at.adesso.leagueapi.gamedataservice.infrastructure.config.mapper.DefaultMapperConfig;
 import org.mapstruct.*;
 
 @Mapper(config = DefaultMapperConfig.class)

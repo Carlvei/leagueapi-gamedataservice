@@ -1,12 +1,12 @@
 package at.adesso.leagueapi.gamedataservice.infrastructure.adapter.riot.matchhistory.mapper;
 
+import at.adesso.leagueapi.commons.mapper.DefaultMapperConfig;
 import at.adesso.leagueapi.gamedataservice.domain.matchhistory.Item;
 import at.adesso.leagueapi.gamedataservice.domain.matchhistory.MatchhistoryEntry;
 import at.adesso.leagueapi.gamedataservice.domain.matchhistory.Participant;
 import at.adesso.leagueapi.gamedataservice.domain.matchhistory.Team;
 import at.adesso.leagueapi.gamedataservice.infrastructure.adapter.riot.matchhistory.model.MatchhistoryEntryApiDto;
 import at.adesso.leagueapi.gamedataservice.infrastructure.adapter.riot.matchhistory.model.ParticipantApiDto;
-import at.adesso.leagueapi.gamedataservice.infrastructure.config.mapper.DefaultMapperConfig;
 import org.mapstruct.AfterMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

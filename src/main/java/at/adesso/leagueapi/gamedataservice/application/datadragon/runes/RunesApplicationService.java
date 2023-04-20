@@ -1,10 +1,10 @@
 package at.adesso.leagueapi.gamedataservice.application.datadragon.runes;
 
+import at.adesso.leagueapi.commons.errorhandling.exception.ResourceNotFoundException;
 import at.adesso.leagueapi.gamedataservice.application.datadragon.AbstractDataDragonApplicationService;
 import at.adesso.leagueapi.gamedataservice.domain.runes.Rune;
 import at.adesso.leagueapi.gamedataservice.domain.runes.RuneTree;
 import at.adesso.leagueapi.gamedataservice.infrastructure.adapter.riot.runes.RiotRunesAdapter;
-import at.adesso.leagueapi.gamedataservice.infrastructure.config.errorhandling.exception.ResourceNotFoundException;
 import at.adesso.leagueapi.gamedataservice.infrastructure.config.model.DataDragonProperties;
 import org.springframework.stereotype.Service;
 
