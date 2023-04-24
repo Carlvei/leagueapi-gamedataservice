@@ -1,7 +1,7 @@
 riot:
   api:
     latest-game-version: 13.7.1
-    key: RGAPI-b59a16fc-bc9f-4a2b-8fd3-c4269c6aa1a5
+    key: test
     regions:
       euw:
         base-url: https://euw1.api.riotgames.com

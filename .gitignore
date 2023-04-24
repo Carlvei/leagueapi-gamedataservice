@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Riot api key ###
+src/main/resources/env/env.properties
