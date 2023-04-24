@@ -18,9 +18,9 @@ public class SummonerController {
     private final SummonerDtoMapper summonerDtoMapper;
 
     @CrossOrigin
-    @GetMapping("/{name}")
-    public ResponseEntity<SummonerDto> getSummoner(@PathVariable final String name) {
-        final Summoner summoner = summonerApplicationService.readSummoner(name);
+    @GetMapping
+    public ResponseEntity<SummonerDto> getSummoner(@RequestParam final String summonerName) {
+        final Summoner summoner = summonerApplicationService.readSummoner(summonerName);
         return ResponseEntity.
                 ok(summonerDtoMapper.toSummonerDto(summoner));
     }
