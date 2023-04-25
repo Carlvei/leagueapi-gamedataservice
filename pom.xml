@@ -10,14 +10,13 @@
     </parent>
     <groupId>at.adesso.leagueapi</groupId>
     <artifactId>gamedataservice</artifactId>
-    <version>0.0.5</version>
+    <version>0.0.6</version>
     <name>leagueapi-gamedataservice</name>
     <description>gamedataservice</description>
 
     <properties>
         <java.version>17</java.version>
         <http-client.version>5.2.1</http-client.version>
-        <jakarta.validation-api.version>3.0.2</jakarta.validation-api.version>
         <lombok.version>1.18.26</lombok.version>
         <lombok-mapstruct-binding.version>0.2.0</lombok-mapstruct-binding.version>
         <org.mapstruct.version>1.5.3.Final</org.mapstruct.version>
@@ -25,6 +24,7 @@
         <commons.version>0.2.0</commons.version>
         <snakeyaml.version>2.0</snakeyaml.version>
         <test-commons.version>0.1.1</test-commons.version>
+        <hibernate-validator.version>8.0.0.Final</hibernate-validator.version>
     </properties>
     <dependencies>
         <!-- Spring dependencies -->
@@ -52,11 +52,6 @@
             <groupId>org.apache.httpcomponents.client5</groupId>
             <artifactId>httpclient5</artifactId>
             <version>${http-client.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>jakarta.validation</groupId>
-            <artifactId>jakarta.validation-api</artifactId>
-            <version>${jakarta.validation-api.version}</version>
         </dependency>
         <!-- Override spring default because earlier versions have a vulnerability -->
         <dependency>

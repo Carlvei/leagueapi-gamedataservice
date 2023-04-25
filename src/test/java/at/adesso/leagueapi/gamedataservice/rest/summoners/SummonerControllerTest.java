@@ -1,19 +1,20 @@
 package at.adesso.leagueapi.gamedataservice.rest.summoners;
 
+import at.adesso.leagueapi.commons.errorhandling.error.CommonError;
+import at.adesso.leagueapi.commons.mapper.JsonObjectToStringMapper;
 import at.adesso.leagueapi.gamedataservice.infrastructure.adapter.riot.summoners.model.SummonerApiDto;
+import at.adesso.leagueapi.gamedataservice.infrastructure.api.rest.summoners.SummonerRequestDto;
 import at.adesso.leagueapi.gamedataservice.rest.AbstractControllerTest;
 import at.adesso.leagueapi.testcommons.util.JsonStringToObjectMapper;
 import at.adesso.leagueapi.testcommons.util.TestFileUtils;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.web.client.RestTemplate;
 
 import java.util.Map;
 
@@ -25,31 +26,59 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebMvcTest(SummonerControllerTest.class)
 public class SummonerControllerTest extends AbstractControllerTest {
 
-    @MockBean
-    private RestTemplate restTemplate;
-
     // TODO: finish it after good errorhandling
     private static final String API_URL = "/summoners";
 
     @Test
     @SuppressWarnings("unchecked")
-    void testGetSummoner() throws Exception {
+    void testGetSummonerWithNameIsSuccessful() throws Exception {
         when(restTemplate.exchange(any(String.class), eq(HttpMethod.GET), any(HttpEntity.class), eq(SummonerApiDto.class), any(Map.class)))
                 .thenReturn(ResponseEntity
                         .ok()
                         .body(new JsonStringToObjectMapper<>(SummonerApiDto.class)
                                 .deserialize(TestFileUtils.readFileAsString("/rest/summoners/summoner.json"))));
 
-        mockMvc.perform(getSummonerRequestBuilder("name"))
+        mockMvc.perform(getSummonerWithNameRequestBuilder("name"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$.profileIconUrl").isNotEmpty())
+                .andExpect(jsonPath("$.profileIconUrl").value("https://ddragon.leagueoflegends.com/cdn/testversion/img/profileicon/123.png"))
                 .andExpect(jsonPath("$.summonerLevel").value(12))
                 .andExpect(jsonPath("$.name").value("SummonerName"));
     }
 
-    private MockHttpServletRequestBuilder getSummonerRequestBuilder(final String name) {
+    @Test
+    void testGetSummonerWithEmptyNameResultsInBadRequest() throws Exception {
+        mockMvc.perform(getSummonerWithNameRequestBuilder(""))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.code").value(CommonError.VALIDATION_ERROR.getCode()))
+                .andExpect(jsonPath("$.message").isNotEmpty())
+                .andExpect(jsonPath("$.details").isNotEmpty())
+                .andExpect(jsonPath("$.timeStamp").isNotEmpty());
+    }
+
+    @Test
+    void testGetSummonerWithoutNameResultsInBadRequest() throws Exception {
+        mockMvc.perform(getSummonerWithoutNameRequestBuilder())
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.code").value(CommonError.CLIENT_ERROR.getCode()))
+                .andExpect(jsonPath("$.message").isNotEmpty())
+                .andExpect(jsonPath("$.details").isNotEmpty())
+                .andExpect(jsonPath("$.timeStamp").isNotEmpty());
+    }
+
+    private MockHttpServletRequestBuilder getSummonerWithNameRequestBuilder(final String name) {
         return MockMvcRequestBuilders
-                .get(API_URL + "/" + name);
+                .get(API_URL)
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(new JsonObjectToStringMapper().serialize(
+                        SummonerRequestDto.builder()
+                                .summonerName(name)
+                                .build()
+                ));
+    }
+
+    private MockHttpServletRequestBuilder getSummonerWithoutNameRequestBuilder() {
+        return MockMvcRequestBuilders
+                .get(API_URL);
     }
 }

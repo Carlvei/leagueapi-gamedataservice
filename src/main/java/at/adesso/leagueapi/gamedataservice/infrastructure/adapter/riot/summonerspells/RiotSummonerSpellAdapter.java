@@ -8,7 +8,6 @@ import at.adesso.leagueapi.gamedataservice.infrastructure.adapter.riot.summoners
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
@@ -38,7 +37,7 @@ public class RiotSummonerSpellAdapter {
                         HttpMethod.GET,
                         new HttpEntity<>(null, null),
                         SummonerSpellsResponse.class);
-        if (response.getBody() == null || response.getStatusCode() == HttpStatusCode.valueOf(404)) {
+        if (response.getBody() == null) {
             return Collections.emptyList();
         }
         return mapper.toSummonerSpellList(extractSummonerSpellsAsList(response.getBody()));
