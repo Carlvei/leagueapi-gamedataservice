@@ -1,6 +1,6 @@
 spring:
   config:
-    import: env/env.properties
+    import: optional:env/env.properties
   autoconfigure:
     exclude[0]: org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
 springdoc:
@@ -46,4 +46,4 @@ riot:
               url: ${riot.api.data-dragon.base-url}${riot.api.data-dragon.latest-version}/${riot.api.data-dragon.types.data.extension}/en_US/runesReforged.json
             summoner-spells:
               url: ${riot.api.data-dragon.base-url}${riot.api.data-dragon.latest-version}/${riot.api.data-dragon.types.data.extension}/en_US/summoner.json
-    key: ${RIOT_API_KEY}
+    key: optional:${RIOT_API_KEY}
