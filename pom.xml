@@ -10,7 +10,7 @@
     </parent>
     <groupId>at.adesso.leagueapi</groupId>
     <artifactId>gamedataservice</artifactId>
-    <version>0.1.1</version>
+    <version>0.1.2</version>
     <name>leagueapi-gamedataservice</name>
     <description>gamedataservice</description>
 
