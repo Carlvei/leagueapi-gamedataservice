@@ -34,7 +34,7 @@ jobs:
         server-password: GITHUB_TOKEN # env variable name for GitHub Person
     - name: Build with Maven 
       run:
-        echo ${{ secrets.USER_NAME }}
+        echo "${{ secrets.USER_NAME }} Test";
         mvn -s $GITHUB_WORKSPACE/.github/workflows/maven-settings.xml -B package --file pom.xml
       env:
         USER_NAME: ${{ secrets.USER_NAME }}
