@@ -93,12 +93,12 @@
         <repository>
             <id>commons</id>
             <name>GitHub OWNER Apache Maven Packages</name>
-            <url>https://Carlvei:${GITHUB_TOKEN}@maven.pkg.github.com/Carlvei/leagueapi-commons</url>
+            <url>https://maven.pkg.github.com/Carlvei/leagueapi-commons</url>
         </repository>
         <repository>
             <id>test-commons</id>
             <name>GitHub OWNER Apache Maven Packages</name>
-            <url>https://Carlvei:${GITHUB_TOKEN}@maven.pkg.github.com/Carlvei/testcommons</url>
+            <url>https://maven.pkg.github.com/Carlvei/testcommons</url>
         </repository>
     </repositories>
     <build>
