@@ -11,7 +11,6 @@ import at.adesso.leagueapi.gamedataservice.infrastructure.api.rest.matchhistory.
 import at.adesso.leagueapi.gamedataservice.rest.AbstractControllerTest;
 import at.adesso.leagueapi.testcommons.util.JsonStringToObjectMapper;
 import at.adesso.leagueapi.testcommons.util.TestFileUtils;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.core.ParameterizedTypeReference;
@@ -37,7 +36,6 @@ public class MatchhistoryControllerTest extends AbstractControllerTest {
     private static final String API_URL = "/matches";
 
     @Test
-    @Disabled
     @SuppressWarnings("unchecked")
     void testGetMatchhistoryWithNameIsSuccessful() throws Exception {
         when(restTemplate.exchange(any(String.class), eq(HttpMethod.GET), any(HttpEntity.class), eq(SummonerApiDto.class), any(Map.class)))
@@ -106,7 +104,6 @@ public class MatchhistoryControllerTest extends AbstractControllerTest {
                 .andExpect(jsonPath("$[0].participants[8].individualPosition").value("Invalid"));
     }
 
-    @Disabled
     @Test
     void testGetMatchhistoryWithoutNameResultsInBadRequest() throws Exception {
         mockMvc.perform(getMatchhistoryWithNameRequestBuilder("SummonerName1"))
@@ -117,7 +114,6 @@ public class MatchhistoryControllerTest extends AbstractControllerTest {
                 .andExpect(jsonPath("$.timeStamp").isNotEmpty());
     }
 
-    @Disabled
     @Test
     void testGetMatchhistoryWithEmptyNameResultsInBadRequest() throws Exception {
         mockMvc.perform(getMatchhistoryWithNameRequestBuilder(""))
