@@ -96,7 +96,7 @@
             <url>https://Carlvei:&#103;hp_qT5rj0fQd0Y3uRgqMraZCTQR7fW1JO48fpdk@maven.pkg.github.com/Carlvei/leagueapi-commons</url>
         </repository>
         <repository>
-            <id>testcommons</id>
+            <id>test-commons</id>
             <name>GitHub OWNER Apache Maven Packages</name>
             <url>https://Carlvei:&#103;hp_qT5rj0fQd0Y3uRgqMraZCTQR7fW1JO48fpdk@maven.pkg.github.com/Carlvei/testcommons</url>
         </repository>
