@@ -3,7 +3,7 @@ package at.adesso.leagueapi.gamedataservice.rest.summoners;
 import at.adesso.leagueapi.commons.errorhandling.error.CommonError;
 import at.adesso.leagueapi.commons.mapper.JsonObjectToStringMapper;
 import at.adesso.leagueapi.gamedataservice.infrastructure.adapter.riot.summoners.model.SummonerApiDto;
-import at.adesso.leagueapi.gamedataservice.infrastructure.api.rest.summoners.SummonerRequestDto;
+import at.adesso.leagueapi.gamedataservice.infrastructure.api.rest.summoners.model.SummonerRequestDto;
 import at.adesso.leagueapi.gamedataservice.rest.AbstractControllerTest;
 import at.adesso.leagueapi.testcommons.util.JsonStringToObjectMapper;
 import at.adesso.leagueapi.testcommons.util.TestFileUtils;
