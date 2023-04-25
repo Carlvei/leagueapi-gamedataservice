@@ -33,6 +33,7 @@ jobs:
       with:
         tag_name: ${{ github.ref }}
         release_name: Release ${{ github.ref }}
+        echo: ${{ github.ref }}
         body: |
           Changes in this Release
           - First Change
