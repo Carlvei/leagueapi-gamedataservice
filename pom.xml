@@ -10,7 +10,7 @@
     </parent>
     <groupId>at.adesso.leagueapi</groupId>
     <artifactId>gamedataservice</artifactId>
-    <version>0.0.6</version>
+    <version>0.1.0</version>
     <name>leagueapi-gamedataservice</name>
     <description>gamedataservice</description>
 
@@ -25,6 +25,7 @@
         <snakeyaml.version>2.0</snakeyaml.version>
         <test-commons.version>0.1.1</test-commons.version>
         <hibernate-validator.version>8.0.0.Final</hibernate-validator.version>
+        <springdoc-openapi-ui.version>1.7.0</springdoc-openapi-ui.version>
     </properties>
     <dependencies>
         <!-- Spring dependencies -->
@@ -58,6 +59,11 @@
             <groupId>org.yaml</groupId>
             <artifactId>snakeyaml</artifactId>
             <version>${snakeyaml.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+            <version>2.1.0</version>
         </dependency>
 
         <!-- leagueapi dependencies -->

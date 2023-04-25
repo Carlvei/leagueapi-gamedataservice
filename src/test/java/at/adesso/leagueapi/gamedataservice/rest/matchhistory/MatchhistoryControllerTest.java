@@ -7,7 +7,7 @@ import at.adesso.leagueapi.gamedataservice.infrastructure.adapter.riot.runes.mod
 import at.adesso.leagueapi.gamedataservice.infrastructure.adapter.riot.summoners.model.SummonerApiDto;
 import at.adesso.leagueapi.gamedataservice.infrastructure.adapter.riot.summonerspells.model.SummonerSpellsResponse;
 import at.adesso.leagueapi.gamedataservice.infrastructure.api.rest.matchhistory.MatchhistoryController;
-import at.adesso.leagueapi.gamedataservice.infrastructure.api.rest.matchhistory.MatchhistoryRequestDto;
+import at.adesso.leagueapi.gamedataservice.infrastructure.api.rest.matchhistory.model.MatchhistoryRequestDto;
 import at.adesso.leagueapi.gamedataservice.rest.AbstractControllerTest;
 import at.adesso.leagueapi.testcommons.util.JsonStringToObjectMapper;
 import at.adesso.leagueapi.testcommons.util.TestFileUtils;

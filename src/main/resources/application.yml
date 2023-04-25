@@ -3,7 +3,11 @@ spring:
     import: env/env.properties
   autoconfigure:
     exclude[0]: org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
-
+springdoc:
+  swagger-ui:
+    path: /api/docs/swagger-ui.html
+  api-docs:
+    path: /api/docs
 riot:
   api:
     latest-game-version: 13.7.1

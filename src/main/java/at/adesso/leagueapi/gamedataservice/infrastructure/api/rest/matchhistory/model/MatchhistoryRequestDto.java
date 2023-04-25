@@ -1,15 +1,15 @@
-package at.adesso.leagueapi.gamedataservice.infrastructure.api.rest.summoners;
+package at.adesso.leagueapi.gamedataservice.infrastructure.api.rest.matchhistory.model;
 
 import jakarta.validation.constraints.NotEmpty;
 import lombok.*;
 
-
 @Builder
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
-public class SummonerRequestDto {
+public class MatchhistoryRequestDto {
+
     @NotEmpty
     private String summonerName;
 }
