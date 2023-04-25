@@ -13,7 +13,7 @@
     <version>0.1.3</version>
     <name>leagueapi-gamedataservice</name>
     <description>gamedataservice</description>
-
+ 
     <properties>
         <java.version>17</java.version>
         <http-client.version>5.2.1</http-client.version>
