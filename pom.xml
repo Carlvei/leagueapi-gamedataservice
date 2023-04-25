@@ -10,7 +10,7 @@
     </parent>
     <groupId>at.adesso.leagueapi</groupId>
     <artifactId>gamedataservice</artifactId>
-    <version>0.1.0</version>
+    <version>0.1.1</version>
     <name>leagueapi-gamedataservice</name>
     <description>gamedataservice</description>
 
@@ -26,6 +26,7 @@
         <test-commons.version>0.1.1</test-commons.version>
         <hibernate-validator.version>8.0.0.Final</hibernate-validator.version>
         <springdoc-openapi-ui.version>1.7.0</springdoc-openapi-ui.version>
+        <maven-release-plugin.version>3.0.0</maven-release-plugin.version>
     </properties>
     <dependencies>
         <!-- Spring dependencies -->
@@ -125,6 +126,10 @@
                         </exclude>
                     </excludes>
                 </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>${maven-release-plugin.version}</version>
             </plugin>
         </plugins>
     </build>
