@@ -24,7 +24,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Check version
-        uses: avides/actions-project-version-check@latest
+        uses: avides/actions-project-version-check@v1.4.0
         id: actions_project_version_check
         with:
           token: ${{ secrets.ACCESS_TOKEN }}
