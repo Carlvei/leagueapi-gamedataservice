@@ -29,6 +29,8 @@ jobs:
         with:
           token: ${{ secrets.ACCESS_TOKEN }}
           file-to-check: pom.xml
+
+      - name: Print version check result
         run:
           echo Version check successful. New Version is: ${{ steps.actions_project_version_check.outputs.version }}
 
