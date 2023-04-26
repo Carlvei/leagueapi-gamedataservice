@@ -6,6 +6,8 @@ name: leagueapi-gamedataservice-release-workflow
 on:
   push:
     branches: ['master']
+    
+permissions: write-all
 
 jobs:
   build:
