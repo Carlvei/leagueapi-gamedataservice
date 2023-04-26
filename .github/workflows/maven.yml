@@ -29,7 +29,7 @@ jobs:
         with:
           token: ${{ secrets.ACCESS_TOKEN }}
           file-to-check: pom.xml
-      - echo: "Version check successful. New Version is: " ${{ steps.actions_project_version_check.outputs.version }}
+      - echo: "Version check successful. New Version is: ${{ steps.actions_project_version_check.outputs.version }}"
 
       - name: Set up JDK 17
         uses: actions/setup-java@v3
