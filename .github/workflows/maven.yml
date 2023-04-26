@@ -30,8 +30,6 @@ jobs:
           token: ${{ secrets.ACCESS_TOKEN }}
           file-to-check: pom.xml
 
-
-
       - name: Set up JDK 17
         uses: actions/setup-java@v3
         with:
