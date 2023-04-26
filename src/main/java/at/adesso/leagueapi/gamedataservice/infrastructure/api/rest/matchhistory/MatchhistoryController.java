@@ -7,7 +7,6 @@ import at.adesso.leagueapi.gamedataservice.infrastructure.api.rest.matchhistory.
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,7 +14,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/matches")
 @RequiredArgsConstructor
-@Validated
 public class MatchhistoryController implements MatchhistoryApi {
 
     private final MatchhistoryDtoMapper mapper;
