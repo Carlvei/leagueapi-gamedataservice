@@ -19,7 +19,7 @@ jobs:
         uses: avides/actions-project-version-check@v1.4.0
         id: actions_project_version_check
         with:
-          token: ${{ secrets.ACCESS_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           file-to-check: pom.xml
 
       - name: Print version check result
@@ -36,4 +36,4 @@ jobs:
       - name: Build with Maven
         run: mvn -s $GITHUB_WORKSPACE/.github/workflows/maven-settings.xml -B package --file pom.xml
         env:
-          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
