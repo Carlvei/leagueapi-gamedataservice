@@ -4,13 +4,15 @@ on:
   pull_request:
     branches: [ "master" ]
 
-permissions: write-all
+
 
 jobs:
   build:
     name: gamedataservice-quality-check
     runs-on: ubuntu-latest
-    
+    permissions:
+      packages: read
+      contents: write
     steps:
       - name: Checkout git
         uses: actions/checkout@v3
