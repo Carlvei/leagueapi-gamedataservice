@@ -7,13 +7,16 @@ on:
   push:
     branches: ['master']
     
-permissions: write-all
+
 
 jobs:
   build:
     name: leagueapi-gamedataservice-release
     runs-on: ubuntu-latest
-
+    permissions: 
+      packages: write
+      contents: read
+      repository-projects: write
     steps:
     - name: Checkout git
       uses: actions/checkout@v3
