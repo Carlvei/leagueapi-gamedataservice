@@ -9,8 +9,6 @@
 name: league-gamedataservice quality actions
 
 on:
-  push:
-    branches: [ "master" ]
   pull_request:
     branches: [ "master" ]
 
@@ -18,7 +16,7 @@ permissions: write-all
 
 jobs:
   build:
-
+    name: gamedataservice-quality-check
     runs-on: ubuntu-latest
     
     steps:

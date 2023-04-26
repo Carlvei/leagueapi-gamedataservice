@@ -106,7 +106,7 @@ public class MatchhistoryControllerTest extends AbstractControllerTest {
 
     @Test
     void testGetMatchhistoryWithoutNameResultsInBadRequest() throws Exception {
-        mockMvc.perform(getMatchhistoryWithNameRequestBuilder("SummonerName1"))
+        mockMvc.perform(getMatchhistoryWithoutNameRequestBuilder())
                 .andExpect(status().isBadRequest())
                 .andExpect(jsonPath("$.code").value(CommonError.CLIENT_ERROR.getCode()))
                 .andExpect(jsonPath("$.message").isNotEmpty())
