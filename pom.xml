@@ -10,7 +10,7 @@
     </parent>
     <groupId>at.adesso.leagueapi</groupId>
     <artifactId>gamedataservice</artifactId>
-    <version>0.1.8</version>
+    <version>0.2.0</version>
     <name>leagueapi-gamedataservice</name>
     <description>gamedataservice</description>
 
@@ -23,7 +23,7 @@
         <spring-boot.version>3.0.5</spring-boot.version>
         <commons.version>0.2.0</commons.version>
         <snakeyaml.version>2.0</snakeyaml.version>
-        <test-commons.version>0.1.1</test-commons.version>
+        <test-commons.version>0.2.0</test-commons.version>
         <hibernate-validator.version>8.0.0.Final</hibernate-validator.version>
         <springdoc-openapi-ui.version>1.7.0</springdoc-openapi-ui.version>
         <maven-release-plugin.version>3.0.0</maven-release-plugin.version>
@@ -75,7 +75,7 @@
         </dependency>
         <dependency>
             <groupId>at.adesso.leagueapi</groupId>
-            <artifactId>test-commons</artifactId>
+            <artifactId>testcommons</artifactId>
             <version>${test-commons.version}</version>
             <scope>test</scope>
         </dependency>
@@ -96,9 +96,9 @@
             <url>https://Carlvei:${env.ACCESS_TOKEN}@maven.pkg.github.com/Carlvei/leagueapi-commons</url>
         </repository>
         <repository>
-            <id>test-commons</id>
+            <id>testcommons</id>
             <name>GitHub OWNER Apache Maven Packages</name>
-            <url>https://Carlvei:${env.ACCESS_TOKEN}@maven.pkg.github.com/Carlvei/testcommons</url>
+            <url>https://Carlvei:${env.ACCESS_TOKEN}@maven.pkg.github.com/Carlvei/leagueapi-testcommons</url>
         </repository>
     </repositories>
     <build>
