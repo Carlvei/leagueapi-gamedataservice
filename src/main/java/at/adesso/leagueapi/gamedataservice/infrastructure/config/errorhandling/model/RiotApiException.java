@@ -1,7 +1,7 @@
 package at.adesso.leagueapi.gamedataservice.infrastructure.config.errorhandling.model;
 
 import at.adesso.leagueapi.commons.errorhandling.error.Error;
-import at.adesso.leagueapi.commons.errorhandling.exception.ApiException;
+import at.adesso.leagueapi.commons.errorhandling.exceptions.ApiException;
 
 import java.util.List;
 

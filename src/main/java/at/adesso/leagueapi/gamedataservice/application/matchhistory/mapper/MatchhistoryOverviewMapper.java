@@ -1,6 +1,6 @@
 package at.adesso.leagueapi.gamedataservice.application.matchhistory.mapper;
 
-import at.adesso.leagueapi.commons.errorhandling.exception.ResourceNotFoundException;
+import at.adesso.leagueapi.commons.errorhandling.exceptions.ResourceNotFoundException;
 import at.adesso.leagueapi.commons.mapper.DefaultMapperConfig;
 import at.adesso.leagueapi.gamedataservice.domain.matchhistory.MatchhistoryEntry;
 import at.adesso.leagueapi.gamedataservice.domain.matchhistory.MatchhistoryEntryOverview;

@@ -1,7 +1,7 @@
 package at.adesso.leagueapi.gamedataservice.infrastructure.config.resttemplate;
 
-import at.adesso.leagueapi.commons.errorhandling.exception.ResourceNotFoundException;
-import at.adesso.leagueapi.commons.errorhandling.exception.TechnicalException;
+import at.adesso.leagueapi.commons.errorhandling.exceptions.ResourceNotFoundException;
+import at.adesso.leagueapi.commons.errorhandling.exceptions.TechnicalException;
 import at.adesso.leagueapi.commons.mapper.JsonStringToObjectMapper;
 import at.adesso.leagueapi.gamedataservice.infrastructure.config.errorhandling.model.RiotApiErrorResponse;
 import at.adesso.leagueapi.gamedataservice.infrastructure.config.errorhandling.model.RiotApiException;

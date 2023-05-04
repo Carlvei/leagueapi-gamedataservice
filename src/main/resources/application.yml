@@ -1,13 +1,16 @@
 spring:
   config:
     import: optional:env/env.properties
-  autoconfigure:
-    exclude[0]: org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
+  mvc:
+    servlet:
+      path: /api/gamedataservice/
+
 springdoc:
   swagger-ui:
     path: /api/docs/swagger-ui.html
   api-docs:
     path: /api/docs
+
 riot:
   api:
     latest-game-version: 13.7.1
@@ -46,4 +49,12 @@ riot:
               url: ${riot.api.data-dragon.base-url}${riot.api.data-dragon.latest-version}/${riot.api.data-dragon.types.data.extension}/en_US/runesReforged.json
             summoner-spells:
               url: ${riot.api.data-dragon.base-url}${riot.api.data-dragon.latest-version}/${riot.api.data-dragon.types.data.extension}/en_US/summoner.json
-    key: optional:${RIOT_API_KEY}
+    key: ${RIOT_API_KEY}
+
+server:
+  port: 8082
+
+jwt:
+  key:
+    secret: ${SECRET:#{null}}
+    signature: BeqbvWM1mem/MP887bU919s3AAQmFl6cdanzq5h7LZof9Cz2XsQcAXGuqGziW6t0zAkoB6bevoj/JYN/4sIPjWKoibQr3YsigC4Fiip6CN0=
