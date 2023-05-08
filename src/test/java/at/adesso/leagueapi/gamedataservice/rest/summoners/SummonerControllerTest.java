@@ -38,7 +38,7 @@ public class SummonerControllerTest extends AbstractControllerTest {
                         .body(new JsonStringToObjectMapper<>(SummonerApiDto.class)
                                 .deserialize(TestFileUtils.readFileAsString("/rest/summoners/summoner.json"))));
 
-        mockMvc.perform(getSummonerWithNameRequestBuilder("name"))
+        mockMvc.perform(getSummonerWithNameRequestBuilder("name", USER.getAccessToken()))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.profileIconUrl").value("https://ddragon.leagueoflegends.com/cdn/testversion/img/profileicon/123.png"))
@@ -48,7 +48,7 @@ public class SummonerControllerTest extends AbstractControllerTest {
 
     @Test
     void testGetSummonerWithEmptyNameResultsInBadRequest() throws Exception {
-        mockMvc.perform(getSummonerWithNameRequestBuilder(""))
+        mockMvc.perform(getSummonerWithNameRequestBuilder("", USER.getAccessToken()))
                 .andExpect(status().isBadRequest())
                 .andExpect(jsonPath("$.code").value(CommonError.VALIDATION_ERROR.getCode()))
                 .andExpect(jsonPath("$.message").isNotEmpty())
@@ -58,7 +58,7 @@ public class SummonerControllerTest extends AbstractControllerTest {
 
     @Test
     void testGetSummonerWithoutNameResultsInBadRequest() throws Exception {
-        mockMvc.perform(getSummonerWithoutNameRequestBuilder())
+        mockMvc.perform(getSummonerWithoutNameRequestBuilder(USER.getAccessToken()))
                 .andExpect(status().isBadRequest())
                 .andExpect(jsonPath("$.code").value(CommonError.CLIENT_ERROR.getCode()))
                 .andExpect(jsonPath("$.message").isNotEmpty())
@@ -66,19 +66,22 @@ public class SummonerControllerTest extends AbstractControllerTest {
                 .andExpect(jsonPath("$.timeStamp").isNotEmpty());
     }
 
-    private MockHttpServletRequestBuilder getSummonerWithNameRequestBuilder(final String name) {
+    private MockHttpServletRequestBuilder getSummonerWithNameRequestBuilder(final String name, final String accessToken) {
         return MockMvcRequestBuilders
                 .get(API_URL)
+                .cookie(getAuthenticationCookie(accessToken))
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(new JsonObjectToStringMapper().serialize(
-                        SummonerRequestDto.builder()
-                                .summonerName(name)
-                                .build()
-                ));
+                                SummonerRequestDto.builder()
+                                        .summonerName(name)
+                                        .build()
+                        )
+                );
     }
 
-    private MockHttpServletRequestBuilder getSummonerWithoutNameRequestBuilder() {
+    private MockHttpServletRequestBuilder getSummonerWithoutNameRequestBuilder(final String accessToken) {
         return MockMvcRequestBuilders
-                .get(API_URL);
+                .get(API_URL)
+                .cookie(getAuthenticationCookie(accessToken));
     }
 }

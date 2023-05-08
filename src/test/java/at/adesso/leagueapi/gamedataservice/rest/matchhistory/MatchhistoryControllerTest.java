@@ -18,6 +18,7 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
@@ -37,6 +38,7 @@ public class MatchhistoryControllerTest extends AbstractControllerTest {
 
     @Test
     @SuppressWarnings("unchecked")
+    @WithMockUser(value = "spring")
     void testGetMatchhistoryWithNameIsSuccessful() throws Exception {
         when(restTemplate.exchange(any(String.class), eq(HttpMethod.GET), any(HttpEntity.class), eq(SummonerApiDto.class), any(Map.class)))
                 .thenReturn(ResponseEntity
@@ -70,7 +72,7 @@ public class MatchhistoryControllerTest extends AbstractControllerTest {
                         .body(new JsonStringToObjectMapper<>(SummonerSpellsResponse.class)
                                 .deserialize(TestFileUtils.readFileAsString("/rest/summonerspells/summonerspells.json"))));
 
-        mockMvc.perform(getMatchhistoryWithNameRequestBuilder("SummonerName1"))
+        mockMvc.perform(getMatchhistoryWithNameRequestBuilder("SummonerName1", USER.getAccessToken()))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$[0].gameCreation").isNotEmpty())
@@ -106,7 +108,7 @@ public class MatchhistoryControllerTest extends AbstractControllerTest {
 
     @Test
     void testGetMatchhistoryWithoutNameResultsInBadRequest() throws Exception {
-        mockMvc.perform(getMatchhistoryWithoutNameRequestBuilder())
+        mockMvc.perform(getMatchhistoryWithoutNameRequestBuilder(USER.getAccessToken()))
                 .andExpect(status().isBadRequest())
                 .andExpect(jsonPath("$.code").value(CommonError.CLIENT_ERROR.getCode()))
                 .andExpect(jsonPath("$.message").isNotEmpty())
@@ -116,7 +118,7 @@ public class MatchhistoryControllerTest extends AbstractControllerTest {
 
     @Test
     void testGetMatchhistoryWithEmptyNameResultsInBadRequest() throws Exception {
-        mockMvc.perform(getMatchhistoryWithNameRequestBuilder(""))
+        mockMvc.perform(getMatchhistoryWithNameRequestBuilder("", USER.getAccessToken()))
                 .andExpect(status().isBadRequest())
                 .andExpect(jsonPath("$.code").value(CommonError.VALIDATION_ERROR.getCode()))
                 .andExpect(jsonPath("$.message").isNotEmpty())
@@ -124,9 +126,10 @@ public class MatchhistoryControllerTest extends AbstractControllerTest {
                 .andExpect(jsonPath("$.timeStamp").isNotEmpty());
     }
 
-    private MockHttpServletRequestBuilder getMatchhistoryWithNameRequestBuilder(final String name) {
+    private MockHttpServletRequestBuilder getMatchhistoryWithNameRequestBuilder(final String name, final String accessToken) {
         return MockMvcRequestBuilders
                 .get(API_URL)
+                .cookie(getAuthenticationCookie(accessToken))
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(new JsonObjectToStringMapper().serialize(
                         MatchhistoryRequestDto.builder()
@@ -135,8 +138,9 @@ public class MatchhistoryControllerTest extends AbstractControllerTest {
                 ));
     }
 
-    private MockHttpServletRequestBuilder getMatchhistoryWithoutNameRequestBuilder() {
+    private MockHttpServletRequestBuilder getMatchhistoryWithoutNameRequestBuilder(final String accessToken) {
         return MockMvcRequestBuilders
-                .get(API_URL);
+                .get(API_URL)
+                .cookie(getAuthenticationCookie(accessToken));
     }
 }

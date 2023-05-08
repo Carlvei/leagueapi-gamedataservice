@@ -1,6 +1,6 @@
 package at.adesso.leagueapi.gamedataservice.application.datadragon.runes;
 
-import at.adesso.leagueapi.commons.errorhandling.exception.ResourceNotFoundException;
+import at.adesso.leagueapi.commons.errorhandling.exceptions.ResourceNotFoundException;
 import at.adesso.leagueapi.gamedataservice.application.datadragon.AbstractDataDragonApplicationService;
 import at.adesso.leagueapi.gamedataservice.domain.runes.Rune;
 import at.adesso.leagueapi.gamedataservice.domain.runes.RuneTree;
