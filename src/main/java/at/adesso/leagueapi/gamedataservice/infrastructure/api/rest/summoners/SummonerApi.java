@@ -7,7 +7,9 @@ import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import jakarta.validation.constraints.NotEmpty;
 import org.springframework.http.ResponseEntity;
+
 
 public interface SummonerApi {
 
@@ -35,5 +37,5 @@ public interface SummonerApi {
                                             array = @ArraySchema(schema = @Schema(implementation = Error.class)))
                             })
             })
-    ResponseEntity<SummonerDto> getSummoner(String summonerName);
+    ResponseEntity<SummonerDto> getSummoner(@NotEmpty String summonerName);
 }
