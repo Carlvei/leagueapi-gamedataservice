@@ -2,7 +2,6 @@ package at.adesso.leagueapi.gamedataservice.infrastructure.api.rest.matchhistory
 
 import at.adesso.leagueapi.commons.errorhandling.error.Error;
 import at.adesso.leagueapi.gamedataservice.infrastructure.api.rest.matchhistory.model.MatchhistoryEntryOverviewDto;
-import at.adesso.leagueapi.gamedataservice.infrastructure.api.rest.matchhistory.model.MatchhistoryRequestDto;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -37,5 +36,5 @@ public interface MatchhistoryApi {
                                             array = @ArraySchema(schema = @Schema(implementation = Error.class)))
                             })
             })
-    ResponseEntity<List<MatchhistoryEntryOverviewDto>> getMatchHistoryEntries(MatchhistoryRequestDto requestDto);
+    ResponseEntity<List<MatchhistoryEntryOverviewDto>> getMatchHistoryEntries(String summonerName);
 }

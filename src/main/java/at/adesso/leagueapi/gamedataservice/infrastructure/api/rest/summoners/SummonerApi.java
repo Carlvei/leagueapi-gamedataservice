@@ -2,7 +2,6 @@ package at.adesso.leagueapi.gamedataservice.infrastructure.api.rest.summoners;
 
 import at.adesso.leagueapi.commons.errorhandling.error.Error;
 import at.adesso.leagueapi.gamedataservice.infrastructure.api.rest.summoners.model.SummonerDto;
-import at.adesso.leagueapi.gamedataservice.infrastructure.api.rest.summoners.model.SummonerRequestDto;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -36,5 +35,5 @@ public interface SummonerApi {
                                             array = @ArraySchema(schema = @Schema(implementation = Error.class)))
                             })
             })
-    ResponseEntity<SummonerDto> getSummoner(SummonerRequestDto requestDto);
+    ResponseEntity<SummonerDto> getSummoner(String summonerName);
 }
