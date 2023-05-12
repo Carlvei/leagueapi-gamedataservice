@@ -10,7 +10,7 @@
     </parent>
     <groupId>at.adesso.leagueapi</groupId>
     <artifactId>gamedataservice</artifactId>
-    <version>0.3.0</version>
+    <version>0.3.1</version>
     <name>leagueapi-gamedataservice</name>
     <description>gamedataservice</description>
 
@@ -21,7 +21,7 @@
         <lombok-mapstruct-binding.version>0.2.0</lombok-mapstruct-binding.version>
         <org.mapstruct.version>1.5.3.Final</org.mapstruct.version>
         <spring-boot.version>3.0.5</spring-boot.version>
-        <commons.version>1.0.1</commons.version>
+        <commons.version>1.0.3</commons.version>
         <snakeyaml.version>2.0</snakeyaml.version>
         <test-commons.version>0.2.0</test-commons.version>
         <hibernate-validator.version>8.0.0.Final</hibernate-validator.version>
@@ -34,10 +34,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-validation</artifactId>
-        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-cache</artifactId>
