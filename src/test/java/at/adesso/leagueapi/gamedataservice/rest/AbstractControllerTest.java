@@ -53,5 +53,8 @@ public abstract class AbstractControllerTest {
         return new Cookie(JwtSecurityFilter.ACCESS_TOKEN_NAME, accessToken);
     }
 
+    protected String appendRequestParam(final String baseUrl, final String name, final String value) {
+        return baseUrl + "?" + name + "=" + value;
+    }
 
 }

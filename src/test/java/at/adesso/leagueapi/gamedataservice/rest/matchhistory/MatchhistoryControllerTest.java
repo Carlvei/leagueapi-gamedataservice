@@ -1,13 +1,11 @@
 package at.adesso.leagueapi.gamedataservice.rest.matchhistory;
 
 import at.adesso.leagueapi.commons.errorhandling.error.CommonError;
-import at.adesso.leagueapi.commons.mapper.JsonObjectToStringMapper;
 import at.adesso.leagueapi.gamedataservice.infrastructure.adapter.riot.matchhistory.model.MatchHistoryWrapperApiDto;
 import at.adesso.leagueapi.gamedataservice.infrastructure.adapter.riot.runes.model.RuneTreeDto;
 import at.adesso.leagueapi.gamedataservice.infrastructure.adapter.riot.summoners.model.SummonerApiDto;
 import at.adesso.leagueapi.gamedataservice.infrastructure.adapter.riot.summonerspells.model.SummonerSpellsResponse;
 import at.adesso.leagueapi.gamedataservice.infrastructure.api.rest.matchhistory.MatchhistoryController;
-import at.adesso.leagueapi.gamedataservice.infrastructure.api.rest.matchhistory.model.MatchhistoryRequestDto;
 import at.adesso.leagueapi.gamedataservice.rest.AbstractControllerTest;
 import at.adesso.leagueapi.testcommons.util.JsonStringToObjectMapper;
 import at.adesso.leagueapi.testcommons.util.TestFileUtils;
@@ -35,6 +33,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class MatchhistoryControllerTest extends AbstractControllerTest {
 
     private static final String API_URL = "/matches";
+
+    private static final String SUMMONERNAME_REQUEST_PARAM_NAME = "summonerName";
 
     @Test
     @SuppressWarnings("unchecked")
@@ -128,14 +128,8 @@ public class MatchhistoryControllerTest extends AbstractControllerTest {
 
     private MockHttpServletRequestBuilder getMatchhistoryWithNameRequestBuilder(final String name, final String accessToken) {
         return MockMvcRequestBuilders
-                .get(API_URL)
-                .cookie(getAuthenticationCookie(accessToken))
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(new JsonObjectToStringMapper().serialize(
-                        MatchhistoryRequestDto.builder()
-                                .summonerName(name)
-                                .build()
-                ));
+                .get(appendRequestParam(API_URL, SUMMONERNAME_REQUEST_PARAM_NAME, name))
+                .cookie(getAuthenticationCookie(accessToken));
     }
 
     private MockHttpServletRequestBuilder getMatchhistoryWithoutNameRequestBuilder(final String accessToken) {

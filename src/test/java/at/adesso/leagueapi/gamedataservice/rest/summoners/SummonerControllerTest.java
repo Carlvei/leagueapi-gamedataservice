@@ -1,9 +1,7 @@
 package at.adesso.leagueapi.gamedataservice.rest.summoners;
 
 import at.adesso.leagueapi.commons.errorhandling.error.CommonError;
-import at.adesso.leagueapi.commons.mapper.JsonObjectToStringMapper;
 import at.adesso.leagueapi.gamedataservice.infrastructure.adapter.riot.summoners.model.SummonerApiDto;
-import at.adesso.leagueapi.gamedataservice.infrastructure.api.rest.summoners.model.SummonerRequestDto;
 import at.adesso.leagueapi.gamedataservice.rest.AbstractControllerTest;
 import at.adesso.leagueapi.testcommons.util.JsonStringToObjectMapper;
 import at.adesso.leagueapi.testcommons.util.TestFileUtils;
@@ -28,6 +26,7 @@ public class SummonerControllerTest extends AbstractControllerTest {
 
     // TODO: finish it after good errorhandling
     private static final String API_URL = "/summoners";
+    private static final String SUMMONERNAME_REQUEST_PARAM_NAME = "summonerName";
 
     @Test
     @SuppressWarnings("unchecked")
@@ -68,15 +67,8 @@ public class SummonerControllerTest extends AbstractControllerTest {
 
     private MockHttpServletRequestBuilder getSummonerWithNameRequestBuilder(final String name, final String accessToken) {
         return MockMvcRequestBuilders
-                .get(API_URL)
-                .cookie(getAuthenticationCookie(accessToken))
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(new JsonObjectToStringMapper().serialize(
-                                SummonerRequestDto.builder()
-                                        .summonerName(name)
-                                        .build()
-                        )
-                );
+                .get(appendRequestParam(API_URL, SUMMONERNAME_REQUEST_PARAM_NAME, name))
+                .cookie(getAuthenticationCookie(accessToken));
     }
 
     private MockHttpServletRequestBuilder getSummonerWithoutNameRequestBuilder(final String accessToken) {
