@@ -32,7 +32,8 @@ public abstract class AbstractControllerTest {
         private Role role;
     }
 
-    protected final static TestUser USER = new TestUser("eyJhbGciOiJIUzM4NCJ9.eyJ1c2VySWQiOiI1OGUwYTZkNi0wNDAxLTQxMDItODM5NC05NmUzMGIwNmY3NjAiLCJyb2xlIjoiVVNFUiIsImlhdCI6MTY4MzUzMzI4NywiZXhwIjoxNzc4MjI3Njg3fQ.vQIdUDUA8JXEryRgAIl2ndU4EvOK_YfgzZrprPJZXaSKEUU91cJIxran2dS7FBlS",
+    protected final static TestUser USER = new TestUser(
+            "eyJhbGciOiJIUzM4NCJ9.eyJ1c2VySWQiOiI1OGUwYTZkNi0wNDAxLTQxMDItODM5NC05NmUzMGIwNmY3NjAiLCJyb2xlIjoiVVNFUiIsImlhdCI6MTY4MzUzMzI4NywiZXhwIjoxNzc4MjI3Njg3fQ.vQIdUDUA8JXEryRgAIl2ndU4EvOK_YfgzZrprPJZXaSKEUU91cJIxran2dS7FBlS",
             "TestUserName",
             Role.USER);
 

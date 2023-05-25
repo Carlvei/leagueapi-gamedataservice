@@ -58,3 +58,6 @@ jwt:
   key:
     secret: ${SECRET:#{null}}
     signature: BeqbvWM1mem/MP887bU919s3AAQmFl6cdanzq5h7LZof9Cz2XsQcAXGuqGziW6t0zAkoB6bevoj/JYN/4sIPjWKoibQr3YsigC4Fiip6CN0=
+logging:
+  level:
+    root: debug
