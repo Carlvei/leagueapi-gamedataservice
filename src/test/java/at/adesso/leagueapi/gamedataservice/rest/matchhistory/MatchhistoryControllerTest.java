@@ -2,7 +2,7 @@ package at.adesso.leagueapi.gamedataservice.rest.matchhistory;
 
 import at.adesso.leagueapi.commons.errorhandling.error.CommonError;
 import at.adesso.leagueapi.gamedataservice.infrastructure.adapter.riot.matchhistory.RiotMatchhistoryAdapter;
-import at.adesso.leagueapi.gamedataservice.infrastructure.adapter.riot.matchhistory.model.MatchHistoryWrapperApiDto;
+import at.adesso.leagueapi.gamedataservice.infrastructure.adapter.riot.matchhistory.model.gameinfo.MatchHistoryWrapperApiDto;
 import at.adesso.leagueapi.gamedataservice.infrastructure.adapter.riot.runes.model.RuneTreeDto;
 import at.adesso.leagueapi.gamedataservice.infrastructure.adapter.riot.summoners.model.SummonerApiDto;
 import at.adesso.leagueapi.gamedataservice.infrastructure.adapter.riot.summonerspells.model.SummonerSpellsResponse;

@@ -1,9 +1,9 @@
 package at.adesso.leagueapi.gamedataservice.infrastructure.adapter.riot.matchhistory;
 
-import at.adesso.leagueapi.gamedataservice.domain.matchhistory.MatchhistoryEntry;
+import at.adesso.leagueapi.gamedataservice.application.summoners.matchhistory.MatchhistoryEntry;
 import at.adesso.leagueapi.gamedataservice.infrastructure.adapter.riot.AbstractRiotAdapter;
 import at.adesso.leagueapi.gamedataservice.infrastructure.adapter.riot.matchhistory.mapper.MatchhistoryApiDtoMapper;
-import at.adesso.leagueapi.gamedataservice.infrastructure.adapter.riot.matchhistory.model.MatchHistoryWrapperApiDto;
+import at.adesso.leagueapi.gamedataservice.infrastructure.adapter.riot.matchhistory.model.gameinfo.MatchHistoryWrapperApiDto;
 import at.adesso.leagueapi.gamedataservice.infrastructure.config.resttemplate.model.RiotApiConfigurationProperties;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;

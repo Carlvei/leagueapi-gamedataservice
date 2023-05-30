@@ -1,6 +1,5 @@
 package at.adesso.leagueapi.gamedataservice.application.datadragon.runes;
 
-import at.adesso.leagueapi.commons.errorhandling.exceptions.ResourceNotFoundException;
 import at.adesso.leagueapi.gamedataservice.application.datadragon.AbstractDataDragonApplicationService;
 import at.adesso.leagueapi.gamedataservice.domain.runes.Rune;
 import at.adesso.leagueapi.gamedataservice.domain.runes.RuneTree;
@@ -48,7 +47,7 @@ public class RunesApplicationService extends AbstractDataDragonApplicationServic
         final Rune rune = getListOfRunes().stream()
                 .filter(runeElement -> runeElement.getId() == runeIconId)
                 .findFirst()
-                .orElseThrow(ResourceNotFoundException::new);
+                .orElse(null);
 
         return rune == null ? null : rune.getIcon();
     }

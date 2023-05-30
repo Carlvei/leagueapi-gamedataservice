@@ -1,4 +1,4 @@
-package at.adesso.leagueapi.gamedataservice.domain.matchhistory;
+package at.adesso.leagueapi.gamedataservice.application.summoners.matchhistory;
 
 import lombok.Builder;
 import lombok.Data;

@@ -1,6 +1,6 @@
 package at.adesso.leagueapi.gamedataservice.infrastructure.api.rest.matchhistory.model;
 
-import at.adesso.leagueapi.gamedataservice.domain.matchhistory.Team;
+import at.adesso.leagueapi.gamedataservice.application.summoners.matchhistory.Team;
 import lombok.Data;
 
 @Data
