@@ -23,9 +23,11 @@ public class MatchhistoryController implements MatchhistoryApi {
     private final MatchhistoryApplicationService matchhistoryApplicationService;
 
     @GetMapping
-    public ResponseEntity<List<MatchhistoryEntryOverviewDto>> getMatchHistoryEntries(@RequestParam final String summonerName) {
+    public ResponseEntity<List<MatchhistoryEntryOverviewDto>> getMatchHistoryEntries(@RequestParam final String summonerName,
+                                                                                     @RequestParam(required = false, defaultValue = "0") final int page,
+                                                                                     @RequestParam(required = false, defaultValue = "20") final int limit) {
         return ResponseEntity
                 .ok()
-                .body(mapper.toMatchHistoryEntryOverviewListDto(matchhistoryApplicationService.getMatchhistoryOverview(summonerName)));
+                .body(mapper.toMatchHistoryEntryOverviewListDto(matchhistoryApplicationService.getMatchhistoryOverview(summonerName, page, limit)));
     }
 }

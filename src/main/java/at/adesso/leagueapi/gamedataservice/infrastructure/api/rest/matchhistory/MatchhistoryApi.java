@@ -7,6 +7,8 @@ import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
 import org.springframework.http.ResponseEntity;
 
@@ -37,5 +39,7 @@ public interface MatchhistoryApi {
                                             array = @ArraySchema(schema = @Schema(implementation = Error.class)))
                             })
             })
-    ResponseEntity<List<MatchhistoryEntryOverviewDto>> getMatchHistoryEntries(@NotEmpty String summonerName);
+    ResponseEntity<List<MatchhistoryEntryOverviewDto>> getMatchHistoryEntries(@NotEmpty String summonerName,
+                                                                              @Min(0) @Max(99999) final int page,
+                                                                              @Max(100) final int limit);
 }
