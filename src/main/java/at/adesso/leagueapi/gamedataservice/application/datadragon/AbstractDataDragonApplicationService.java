@@ -6,6 +6,8 @@ public abstract class AbstractDataDragonApplicationService {
 
     protected final DataDragonProperties properties;
 
+    protected final static String ASSET_NOT_FOUND_KEY = "NOT_FOUND";
+
     protected AbstractDataDragonApplicationService(DataDragonProperties properties) {
         this.properties = properties;
     }
