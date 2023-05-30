@@ -7,7 +7,6 @@ import at.adesso.leagueapi.gamedataservice.domain.matchhistory.MatchhistoryEntry
 import at.adesso.leagueapi.gamedataservice.infrastructure.adapter.riot.matchhistory.RiotMatchhistoryAdapter;
 import at.adesso.leagueapi.gamedataservice.infrastructure.adapter.riot.summoners.RiotSummonerAdapter;
 import lombok.RequiredArgsConstructor;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -21,7 +20,7 @@ public class MatchhistoryApplicationService {
     private final RiotSummonerAdapter summonerAdapter;
     private final MatchhistoryOverviewMapper overviewMapper;
 
-    @Cacheable("testing")
+
     public List<MatchhistoryEntryOverview> getMatchhistoryOverview(final String summonerName) {
         final String puuid = getPuuid(summonerName);
         final List<String> matchIds = matchhistoryAdapter.queryMatchIds(puuid, 0, 20)
