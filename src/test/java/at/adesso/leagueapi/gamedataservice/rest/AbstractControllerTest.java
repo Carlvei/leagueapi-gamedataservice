@@ -14,6 +14,10 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
@@ -58,4 +62,11 @@ public abstract class AbstractControllerTest {
         return baseUrl + "?" + name + "=" + value;
     }
 
+    protected String appendRequestParams(final String baseUrl, final Map<String, String> requestParams) {
+        final List<String> paramStrings = new ArrayList<>();
+        for (final Map.Entry<String, String> param : requestParams.entrySet()) {
+            paramStrings.add(param.getKey() + "=" + param.getValue());
+        }
+        return baseUrl + "?" + String.join("&", paramStrings);
+    }
 }

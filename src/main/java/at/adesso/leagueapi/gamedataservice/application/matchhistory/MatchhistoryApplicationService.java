@@ -20,10 +20,11 @@ public class MatchhistoryApplicationService {
     private final RiotSummonerAdapter summonerAdapter;
     private final MatchhistoryOverviewMapper overviewMapper;
 
-
-    public List<MatchhistoryEntryOverview> getMatchhistoryOverview(final String summonerName) {
+    public List<MatchhistoryEntryOverview> getMatchhistoryOverview(final String summonerName,
+                                                                   final int page,
+                                                                   final int limit) {
         final String puuid = getPuuid(summonerName);
-        final List<String> matchIds = matchhistoryAdapter.queryMatchIds(puuid, 0, 20)
+        final List<String> matchIds = matchhistoryAdapter.queryMatchIds(puuid, convertToOffset(page, limit), limit)
                 .orElseThrow(ResourceNotFoundException::new);
 
         final List<MatchhistoryEntryOverview> entries = new ArrayList<>();
@@ -39,5 +40,9 @@ public class MatchhistoryApplicationService {
         return summonerAdapter.getSummoner(summonerName)
                 .orElseThrow(ResourceNotFoundException::new)
                 .getPuuid();
+    }
+
+    private int convertToOffset(final int page, final int limit) {
+        return page * limit;
     }
 }
