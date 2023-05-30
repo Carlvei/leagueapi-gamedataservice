@@ -24,7 +24,8 @@ public class RunesApplicationService extends AbstractDataDragonApplicationServic
     }
 
     public String getRuneIconUrl(final int runeIconId) {
-        return buildUrl(getUrlExtension(runeIconId));
+        final String urlExtension = getUrlExtension(runeIconId);
+        return urlExtension == null ? ASSET_NOT_FOUND_KEY : buildUrl(urlExtension);
     }
 
     private String buildUrl(final String urlExtension) {
@@ -44,10 +45,11 @@ public class RunesApplicationService extends AbstractDataDragonApplicationServic
     }
 
     private String getUrlExtension(final int runeIconId) {
-        return getListOfRunes().stream()
-                .filter(rune -> rune.getId() == runeIconId)
+        final Rune rune = getListOfRunes().stream()
+                .filter(runeElement -> runeElement.getId() == runeIconId)
                 .findFirst()
-                .orElseThrow(ResourceNotFoundException::new)
-                .getIcon();
+                .orElseThrow(ResourceNotFoundException::new);
+
+        return rune == null ? null : rune.getIcon();
     }
 }

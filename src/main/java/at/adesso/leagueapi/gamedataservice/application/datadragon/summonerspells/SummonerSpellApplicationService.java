@@ -1,6 +1,5 @@
 package at.adesso.leagueapi.gamedataservice.application.datadragon.summonerspells;
 
-import at.adesso.leagueapi.commons.errorhandling.exceptions.ResourceNotFoundException;
 import at.adesso.leagueapi.gamedataservice.application.datadragon.AbstractDataDragonApplicationService;
 import at.adesso.leagueapi.gamedataservice.domain.summonerspells.SummonerSpell;
 import at.adesso.leagueapi.gamedataservice.infrastructure.adapter.riot.summonerspells.RiotSummonerSpellAdapter;
@@ -24,7 +23,8 @@ public class SummonerSpellApplicationService extends AbstractDataDragonApplicati
     }
 
     public String getSummonerSpellIconUrl(final Integer summonerSpellIconKey) {
-        return buildUrl(getSummonerSpellId(summonerSpellIconKey));
+        final String summonerSpellId = (getSummonerSpellId(summonerSpellIconKey));
+        return summonerSpellId == null ? ASSET_NOT_FOUND_KEY : buildUrl(summonerSpellId);
     }
 
     private String buildUrl(final String summonerSpellName) {
@@ -32,11 +32,12 @@ public class SummonerSpellApplicationService extends AbstractDataDragonApplicati
     }
 
     private String getSummonerSpellId(final Integer summonerSpellIconKey) {
-        return getSummonerSpells().stream()
+        final SummonerSpell spell = getSummonerSpells().stream()
                 .filter(summonerSpell -> summonerSpell.getKey().equals(String.valueOf(summonerSpellIconKey)))
                 .findFirst()
-                .orElseThrow(ResourceNotFoundException::new)
-                .getId();
+                .orElse(null);
+
+        return spell == null ? null : spell.getId();
     }
 
     private List<SummonerSpell> getSummonerSpells() {
