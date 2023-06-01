@@ -1,13 +1,13 @@
 package at.adesso.leagueapi.gamedataservice.infrastructure.api.rest.matchhistory.model;
 
-import at.adesso.leagueapi.gamedataservice.domain.matchhistory.Team;
+import at.adesso.leagueapi.gamedataservice.application.matchhistory.model.TeamEnum;
 import lombok.Data;
 
 @Data
 public class ParticipantOverviewDto {
     private String championIconUrl;
     private String summonerName;
-    private Team team;
+    private TeamEnum team;
     private String role;
     private String individualPosition;
 }

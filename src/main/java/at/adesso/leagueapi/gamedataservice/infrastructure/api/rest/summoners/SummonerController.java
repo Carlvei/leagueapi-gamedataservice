@@ -1,7 +1,7 @@
 package at.adesso.leagueapi.gamedataservice.infrastructure.api.rest.summoners;
 
 import at.adesso.leagueapi.gamedataservice.application.summoners.SummonerApplicationService;
-import at.adesso.leagueapi.gamedataservice.domain.accounts.model.Summoner;
+import at.adesso.leagueapi.gamedataservice.domain.summoners.model.Summoner;
 import at.adesso.leagueapi.gamedataservice.infrastructure.api.rest.summoners.mapper.SummonerDtoMapper;
 import at.adesso.leagueapi.gamedataservice.infrastructure.api.rest.summoners.model.SummonerDto;
 import lombok.RequiredArgsConstructor;

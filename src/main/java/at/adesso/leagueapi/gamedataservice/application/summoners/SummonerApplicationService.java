@@ -1,8 +1,8 @@
 package at.adesso.leagueapi.gamedataservice.application.summoners;
 
 import at.adesso.leagueapi.commons.errorhandling.exceptions.ResourceNotFoundException;
-import at.adesso.leagueapi.gamedataservice.domain.accounts.model.Summoner;
-import at.adesso.leagueapi.gamedataservice.infrastructure.adapter.riot.summoners.RiotSummonerAdapter;
+import at.adesso.leagueapi.gamedataservice.application.summoners.facade.SummonerPersistenceFacade;
+import at.adesso.leagueapi.gamedataservice.domain.summoners.model.Summoner;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -10,11 +10,11 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class SummonerApplicationService {
 
-    private final RiotSummonerAdapter riotSummonerAdapter;
+    private final SummonerPersistenceFacade summonerPersistenceFacade;
+
 
     public Summoner readSummoner(final String name) {
-        return riotSummonerAdapter.getSummoner(name)
+        return summonerPersistenceFacade.getSummoner(name)
                 .orElseThrow(ResourceNotFoundException::new);
     }
-
 }
