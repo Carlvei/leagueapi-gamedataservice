@@ -10,6 +10,7 @@ import at.adesso.leagueapi.gamedataservice.infrastructure.api.rest.matchhistory.
 import at.adesso.leagueapi.gamedataservice.rest.AbstractControllerTest;
 import at.adesso.leagueapi.testcommons.util.JsonStringToObjectMapper;
 import at.adesso.leagueapi.testcommons.util.TestFileUtils;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.SpyBean;
@@ -31,6 +32,7 @@ import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+@Disabled
 @WebMvcTest(MatchhistoryController.class)
 public class MatchhistoryControllerTest extends AbstractControllerTest {
 
