@@ -1,7 +1,7 @@
 package at.adesso.leagueapi.gamedataservice.infrastructure.adapter.riot.matchhistory.model.gameinfo;
 
 import at.adesso.leagueapi.gamedataservice.infrastructure.adapter.riot.matchhistory.model.participants.ParticipantApiDto;
-import at.adesso.leagueapi.gamedataservice.infrastructure.adapter.riot.matchhistory.model.participants.Team;
+import at.adesso.leagueapi.gamedataservice.infrastructure.adapter.riot.matchhistory.model.participants.TeamApiDto;
 import lombok.Data;
 
 import java.util.List;
@@ -9,20 +9,20 @@ import java.util.List;
 @Data
 public class MatchhistoryEntryApiDto {
 
-    public Long gameCreation;
-    public Integer gameDuration;
-    public Long gameEndTimestamp;
-    public Long gameId;
-    public String gameMode;
-    public String gameName;
-    public Long gameStartTimestamp;
-    public String gameType;
-    public String gameVersion;
-    public Integer mapId;
-    public List<ParticipantApiDto> participants;
-    public String platformId;
-    public Integer queueId;
-    public List<Team> teams;
-    public String tournamentCode;
+    private Long gameCreation;
+    private Integer gameDuration;
+    private Long gameEndTimestamp;
+    private Long gameId;
+    private String gameMode;
+    private String gameName;
+    private Long gameStartTimestamp;
+    private String gameType;
+    private String gameVersion;
+    private Integer mapId;
+    private List<ParticipantApiDto> participants;
+    private String platformId;
+    private Integer queueId;
+    private List<TeamApiDto> teams;
+    private String tournamentCode;
 
 }

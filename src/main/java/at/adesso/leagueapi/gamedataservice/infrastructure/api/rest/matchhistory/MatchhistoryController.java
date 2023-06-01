@@ -1,9 +1,11 @@
 package at.adesso.leagueapi.gamedataservice.infrastructure.api.rest.matchhistory;
 
 import at.adesso.leagueapi.gamedataservice.application.matchhistory.MatchhistoryApplicationService;
+import at.adesso.leagueapi.gamedataservice.application.matchhistory.model.MatchhistoryEntryOverview;
 import at.adesso.leagueapi.gamedataservice.infrastructure.api.rest.matchhistory.mapper.MatchhistoryDtoMapper;
 import at.adesso.leagueapi.gamedataservice.infrastructure.api.rest.matchhistory.model.MatchhistoryEntryOverviewDto;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,6 +19,7 @@ import java.util.List;
 @RequestMapping("/matches")
 @RequiredArgsConstructor
 @Validated
+@Slf4j
 public class MatchhistoryController implements MatchhistoryApi {
 
     private final MatchhistoryDtoMapper mapper;
@@ -25,9 +28,10 @@ public class MatchhistoryController implements MatchhistoryApi {
     @GetMapping
     public ResponseEntity<List<MatchhistoryEntryOverviewDto>> getMatchHistoryEntries(@RequestParam final String summonerName,
                                                                                      @RequestParam(required = false, defaultValue = "0") final int page,
-                                                                                     @RequestParam(required = false, defaultValue = "20") final int limit) {
+                                                                                     @RequestParam(required = false, defaultValue = "10") final int limit) {
+        final List<MatchhistoryEntryOverview> overviews = matchhistoryApplicationService.getMatchhistoryOverview(summonerName, page, limit);
         return ResponseEntity
                 .ok()
-                .body(mapper.toMatchHistoryEntryOverviewListDto(matchhistoryApplicationService.getMatchhistoryOverview(summonerName, page, limit)));
+                .body(mapper.toMatchHistoryEntryOverviewListDto(overviews));
     }
 }

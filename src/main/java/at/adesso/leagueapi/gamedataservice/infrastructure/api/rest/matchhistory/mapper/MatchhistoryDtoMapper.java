@@ -5,10 +5,10 @@ import at.adesso.leagueapi.commons.mapper.DefaultMapperConfig;
 import at.adesso.leagueapi.gamedataservice.application.datadragon.assets.AssetsApplicationService;
 import at.adesso.leagueapi.gamedataservice.application.datadragon.runes.RunesApplicationService;
 import at.adesso.leagueapi.gamedataservice.application.datadragon.summonerspells.SummonerSpellApplicationService;
-import at.adesso.leagueapi.gamedataservice.application.summoners.matchhistory.Item;
-import at.adesso.leagueapi.gamedataservice.application.summoners.matchhistory.MatchhistoryEntryOverview;
-import at.adesso.leagueapi.gamedataservice.application.summoners.matchhistory.Participant;
-import at.adesso.leagueapi.gamedataservice.application.summoners.matchhistory.ParticipantOverview;
+import at.adesso.leagueapi.gamedataservice.application.matchhistory.model.CompactParticipant;
+import at.adesso.leagueapi.gamedataservice.application.matchhistory.model.CompactParticipantOverview;
+import at.adesso.leagueapi.gamedataservice.application.matchhistory.model.Item;
+import at.adesso.leagueapi.gamedataservice.application.matchhistory.model.MatchhistoryEntryOverview;
 import at.adesso.leagueapi.gamedataservice.infrastructure.api.rest.matchhistory.model.ItemDto;
 import at.adesso.leagueapi.gamedataservice.infrastructure.api.rest.matchhistory.model.MatchhistoryEntryOverviewDto;
 import at.adesso.leagueapi.gamedataservice.infrastructure.api.rest.matchhistory.model.ParticipantDto;
@@ -42,20 +42,20 @@ public abstract class MatchhistoryDtoMapper {
     public abstract MatchhistoryEntryOverviewDto toMatchHistoryEntryOverviewListDto(MatchhistoryEntryOverview matchhistoryEntryOverview);
 
     @Mapping(target = "championIconUrl", ignore = true)
-    public abstract ParticipantOverviewDto toParticipantOverviewDto(ParticipantOverview participantOverview);
+    public abstract ParticipantOverviewDto toParticipantOverviewDto(CompactParticipantOverview compactParticipantOverview);
 
     @Mapping(target = "itemUrl", ignore = true)
     public abstract ItemDto toItemDto(Item item);
 
     @AfterMapping
     protected void getChampionIconUrls(@MappingTarget final ParticipantOverviewDto target,
-                                       final ParticipantOverview source) {
+                                       final CompactParticipantOverview source) {
         target.setChampionIconUrl(assetsApplicationService.getChampionIconUrl(source.getChampionName()));
     }
 
     @AfterMapping
     protected void getChampionIconUrls(@MappingTarget final ParticipantDto target,
-                                       final Participant source) {
+                                       final CompactParticipant source) {
         // TODO: find a way without duplication
         target.setChampionIconUrl(assetsApplicationService.getChampionIconUrl(source.getChampionName()));
         target.setPrimaryRuneUrl(runesApplicationService.getRuneIconUrl(source.getPerks().getStyles().stream()
